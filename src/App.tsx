@@ -54,37 +54,53 @@ export default function App() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const form = e.target as HTMLFormElement;
-  const data = new FormData(form);
-
-  try {
-    const response = await fetch('https://formspree.io/f/xkoqyylk', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+    // Función para convertir archivo a Base64
+    const toBase64 = (file: File): Promise<string> => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64String = (reader.result as string).split(',')[1];
+        resolve(base64String);
+      };
+      reader.onerror = error => reject(error);
     });
 
-    if (response.ok) {
-      setIsSuccess(true);
-      form.reset();
-    }
-  } catch (error) {
-    console.error("Error al enviar", error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-    
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      let archivoB64 = '';
+      let archivoMimeType = '';
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    // Limpiar formulario después de un tiempo
-    setTimeout(() => {
+      if (formData.archivo) {
+        archivoB64 = await toBase64(formData.archivo);
+        archivoMimeType = formData.archivo.type;
+      }
+
+      const payload = {
+        ...formData,
+        archivoB64,
+        archivoMimeType,
+        archivo: null // No enviamos el objeto File original
+      };
+
+      // REEMPLAZA ESTA URL CON LA QUE COPIASTE DE GOOGLE APPS SCRIPT
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlzAh3xL0JoxpZJMHGLlfGa4ssVrDpbWa_ldzUojr3VS1tiOLr1nFsL-24RuNhKeTh/exec';
+
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Importante para Google Scripts
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      // Nota: con 'no-cors' no podemos leer response.ok, 
+      // pero si no hay error en el fetch, asumimos éxito.
+      setIsSuccess(true);
+      
+      // Limpiar formulario
       setFormData({
         nombre: '',
         puesto: '',
@@ -95,8 +111,16 @@ export default function App() {
         servicio: '',
         archivo: null
       });
-      setIsSuccess(false);
-    }, 5000);
+
+    } catch (error) {
+      console.error("Error al enviar:", error);
+      alert("Hubo un error al enviar tu postulación. Por favor intentá de nuevo.");
+    } finally {
+      setIsSubmitting(false);
+      
+      // Ocultar mensaje de éxito después de 5 segundos
+      setTimeout(() => setIsSuccess(false), 5000);
+    }
   };
 
   const scrollToSection = (id: string) => {
