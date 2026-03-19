@@ -87,17 +87,15 @@ export default function App() {
       // REEMPLAZA ESTA URL CON LA QUE COPIASTE DE GOOGLE APPS SCRIPT
       const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlzAh3xL0JoxpZJMHGLlfGa4ssVrDpbWa_ldzUojr3VS1tiOLr1nFsL-24RuNhKeTh/exec';
 
-      const response = await fetch(SCRIPT_URL, {
+      await fetch(SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // Importante para Google Scripts
+        mode: 'no-cors', // Google Apps Script requiere esto para peticiones desde otro dominio
         body: JSON.stringify(payload),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        // No enviamos headers complejos para que Google no lo bloquee
       });
 
-      // Nota: con 'no-cors' no podemos leer response.ok, 
-      // pero si no hay error en el fetch, asumimos éxito.
+      // Como usamos 'no-cors', no podemos leer la respuesta, 
+      // pero si llegamos acá es porque el navegador envió el paquete.
       setIsSuccess(true);
       
       // Limpiar formulario
