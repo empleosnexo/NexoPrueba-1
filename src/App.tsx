@@ -16,7 +16,7 @@ import {
   Loader2,
   ArrowRight
 } from 'lucide-react';
-import logo from './logo.png';
+import logo from './Logo.jpg';
 
 // NEXO Logo Component
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
