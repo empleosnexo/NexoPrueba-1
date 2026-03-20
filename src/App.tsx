@@ -16,11 +16,12 @@ import {
   Loader2,
   ArrowRight
 } from 'lucide-react';
+import logo from './logo.png';
 
 // NEXO Logo Component
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
   <img 
-    src="/logo.png" 
+    src={logo} 
     alt="NEXO Logo" 
     className={`${className} object-contain`}
     referrerPolicy="no-referrer"
@@ -218,7 +219,7 @@ export default function App() {
             <div className="grid md:grid-cols-3 gap-12 relative">
               {/* Step 1 */}
               <div className="text-center relative">
-                <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 text-[#1a237e]">
+                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-[#1a237e]">
                   <Smartphone size={32} />
                 </div>
                 <h4 className="text-xl font-bold mb-3">Postulación en la Web</h4>
@@ -227,7 +228,7 @@ export default function App() {
 
               {/* Step 2 */}
               <div className="text-center relative">
-                <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6 text-[#2e7d32]">
+                <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-600">
                   <Mail size={32} />
                 </div>
                 <h4 className="text-xl font-bold mb-3">Contacto Rápido (&lt;24hs)</h4>
@@ -236,7 +237,7 @@ export default function App() {
 
               {/* Step 3 */}
               <div className="text-center relative">
-                <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 text-[#1a237e]">
+                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-[#2e7d32]">
                   <CheckCircle2 size={32} />
                 </div>
                 <h4 className="text-xl font-bold mb-3">Entrega del Kit Nexo</h4>
