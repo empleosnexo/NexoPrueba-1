@@ -19,12 +19,12 @@ import {
 
 // NEXO Logo Component
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
-  <svg viewBox="0 0 200 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 10L50 50V10H65V50L35 10V50H20V10Z" fill="#1a237e"/>
-    <path d="M80 10H110V20H80V25H105V35H80V40H110V50H80V10Z" fill="#1a237e"/>
-    <path d="M120 10L135 30L120 50H135L145 35L155 50H170L155 30L170 10H155L145 25L135 10H120Z" fill="#2e7d32"/>
-    <path d="M180 10C190 10 200 20 200 30C200 40 190 50 180 50C170 50 160 40 160 30C160 20 170 10 180 10ZM180 20C175 20 170 25 170 30C170 35 175 40 180 40C185 40 190 35 190 30C190 25 185 20 180 20Z" fill="#1a237e"/>
-  </svg>
+  <img 
+    src="/logo.png" 
+    alt="NEXO Logo" 
+    className={`${className} object-contain`}
+    referrerPolicy="no-referrer"
+  />
 );
 
 export default function App() {
