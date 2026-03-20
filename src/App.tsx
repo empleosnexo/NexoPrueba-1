@@ -22,7 +22,7 @@ import logo from './Logo.jpg';
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
   <img 
     src={logo} 
-    alt="NEXO Logo" 
+    alt="NEXO" 
     className={`${className} object-contain`}
     referrerPolicy="no-referrer"
   />
