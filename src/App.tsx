@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import logo from './Logo.jpg';
 
-// NEXO Logo Component
+// NEXO Component
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
   <img 
     src={logo} 
