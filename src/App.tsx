@@ -16,12 +16,11 @@ import {
   Loader2,
   ArrowRight
 } from 'lucide-react';
-import logo from './logo.jpg';
 
 // NEXO Component
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
   <img 
-    src={logo} 
+    src="/logo.jpg" 
     alt="NEXO" 
     className={`${className} object-contain`}
     referrerPolicy="no-referrer"
