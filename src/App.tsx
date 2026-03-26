@@ -20,8 +20,8 @@ import {
 // NEXO Component
 const NexoLogo = ({ className = "h-8" }: { className?: string }) => (
   <img 
-    src="/logo.jpg?v=1" 
-    alt="NEXO" 
+    src="" 
+    alt="" 
     className={`${className} object-contain`}
   />
 );
