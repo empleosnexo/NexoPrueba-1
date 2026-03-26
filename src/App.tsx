@@ -133,12 +133,21 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <NexoLogo className="h-8 md:h-10" />
-          <button 
-            onClick={() => scrollToSection('como-funciona')}
-            className="bg-[#1a237e] text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-[#1a237e]/90 transition-all active:scale-95"
-          >
-            Cómo funciona
-          </button>
+          <div className="flex gap-2 md:gap-3">
+            <a 
+              href="/nosotros.pdf" 
+              download="Nexo-Nosotros.pdf"
+              className="border-2 border-[#1a237e] text-[#1a237e] px-4 py-2 rounded-full font-semibold text-sm hover:bg-[#1a237e] hover:text-white transition-all active:scale-95 flex items-center justify-center"
+            >
+              Nosotros
+            </a>
+            <button 
+              onClick={() => scrollToSection('como-funciona')}
+              className="bg-[#1a237e] text-white px-4 py-2 rounded-full font-semibold text-sm hover:bg-[#1a237e]/90 transition-all active:scale-95"
+            >
+              Cómo funciona
+            </button>
+          </div>
         </div>
       </header>
 
